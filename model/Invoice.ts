@@ -1,8 +1,20 @@
-import { Schema } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 
-export const InvoiceSchema = new Schema({
-  company: { type: Schema.Types.ObjectId, ref: "Company" },
-  customer: { type: Schema.Types.ObjectId, ref: "Customer" },
-  amount: Number,
-  status: { type: String, enum: ["Pending", "Paid"] },
-});
+export interface IInvoice extends Document {
+  company: Types.ObjectId;
+  customer: Types.ObjectId;
+  amount: number;
+  status: "Pending" | "Paid";
+}
+
+const InvoiceSchema = new Schema<IInvoice>(
+  {
+    company: { type: Schema.Types.ObjectId, ref: "Company", required: true },
+    customer: { type: Schema.Types.ObjectId, ref: "Customer", required: true },
+    amount: { type: Number, required: true },
+    status: { type: String, enum: ["Pending", "Paid"], default: "Pending" },
+  },
+  { timestamps: true }
+);
+
+export default model<IInvoice>("Invoice", InvoiceSchema);

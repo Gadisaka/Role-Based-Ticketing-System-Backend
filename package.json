@@ -14,11 +14,13 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.13.8",
+    "@types/react-router-dom": "^5.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   },
   "dependencies": {
     "@types/mongoose": "^5.11.96",
-    "mongoose": "^8.11.0"
+    "mongoose": "^8.11.0",
+    "react-router-dom": "^7.2.0"
   }
 }
