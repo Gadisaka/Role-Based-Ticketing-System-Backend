@@ -2,7 +2,7 @@ import { Schema, model, Document, Types } from "mongoose";
 
 export interface ICompany extends Document {
   owner: Types.ObjectId;
-  name: string;
+  companyName: string;
   service: string;
   location: string;
   bankingInfo: string;
@@ -14,7 +14,7 @@ export interface ICompany extends Document {
 const CompanySchema = new Schema<ICompany>(
   {
     owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    name: { type: String, required: true },
+    companyName: { type: String, required: true },
     service: { type: String, required: true },
     location: { type: String, required: true },
     bankingInfo: { type: String, required: true },
